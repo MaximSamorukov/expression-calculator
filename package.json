@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "colors": "^1.4.0",
+    "math-expression-evaluator": "^1.2.22",
+    "mathjs": "^7.2.0",
     "semver": "^6.3.0"
   }
 }
