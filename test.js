@@ -1,275 +1,275 @@
 const { expect } = require('chai');
 const { expressionCalculator } = require('./src/index.js');
 
-describe("Easy", function () {
-    it("Test simple addition", function () {
-        const expr = "2 + 2";
-        const result = 4;
-        expect(expressionCalculator(expr)).to.equal(result);
-    });
-
-    it("Test simple subtraction", function () {
-        const expr = "2-2";
-        const result = 0;
-        expect(expressionCalculator(expr)).to.equal(result);
-    });
-
-    it("Test simple multiplication", function () {
-        const expr = "2*3";
-        const result = 6;
-        expect(expressionCalculator(expr)).to.equal(result);
-    });
-
-    it("Test simple division", function () {
-        const expr = "1/2";
-        const result = 0.5;
-        expect(expressionCalculator(expr)).to.equal(result);
-    });
-
-    it("Test division by zero", function () {
-        const expr = "1 / 0";
-        expect(() => expressionCalculator(expr)).to.throw("TypeError: Division by zero.");
-    });
-
-
-    it("Mixed base test 1", function () {
-        const expr = " 49 + 63 - 58.8 * 36 / 2 + 4 ";
-        const result = -942.4;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 2", function () {
-        const expr = " 84 + 62 / 33 * 10 + 15 ";
-        const result = 117.7879;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-    it("Mixed base test 2_my variant 1", function () {
-        const expr = " 62 / 2";
-        const result = 31;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 2_my variant 2", function () {
-        const expr = " 62 / 2 * 10";
-        const result = 310;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 3", function () {
-        const expr = " 48 + 59 * 86 * 92 * 23 ";
-        const result = 10736632.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 4", function () {
-        const expr = " 16 + 25 - 92 + 54 / 66 ";
-        const result = -50.1818;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 5", function () {
-        const expr = " 64 + 19 - 77 - 93 ";
-        const result = -87.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 6", function () {
-        const expr = " 88 - 72 + 55 * 57 ";
-        const result = 3151.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 7", function () {
-        const expr = " 99 * 55 / 30 + 50 ";
-        const result = 231.5000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 8", function () {
-        const expr = " 11 - 88 + 84 - 48 ";
-        const result = -41.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 9", function () {
-        const expr = " 68 * 60 / 87 / 53 + 17 ";
-        const result = 17.8848;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 10", function () {
-        const expr = " 63 - 69 - 46 + 57 ";
-        const result = 5.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 11", function () {
-        const expr = " 60 + 29 / 57 - 85 ";
-        const result = -24.4912;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 12", function () {
-        const expr = " 34 * 18 * 55 - 50 ";
-        const result = 33610.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 13", function () {
-        const expr = " 12 * 3 - 18 + 34 - 84 ";
-        const result = -32.0000;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 14", function () {
-        const expr = " 70 / 42 - 52 - 64 / 35 ";
-        const result = -52.1619;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
-    it("Mixed base test 15", function () {
-        const expr = " 39 / 41 + 100 + 45 ";
-        const result = 145.9512;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-});
-
-// describe("Medium", function () {
-//     it("Brackets must be paired", function () {
-//         const expr = "1 + 2) * 3";
-//         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+// describe("Easy", function () {
+//     it("Test simple addition", function () {
+//         const expr = "2 + 2";
+//         const result = 4;
+//         expect(expressionCalculator(expr)).to.equal(result);
 //     });
 
-//     it("Brackets must be paired", function () {
-//         const expr = "((1 + 2) * 3";
-//         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+//     it("Test simple subtraction", function () {
+//         const expr = "2-2";
+//         const result = 0;
+//         expect(expressionCalculator(expr)).to.equal(result);
 //     });
 
-//     it("Brackets must be paired", function () {
-//         const expr = "((1 + 2 * 3";
-//         expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+//     it("Test simple multiplication", function () {
+//         const expr = "2*3";
+//         const result = 6;
+//         expect(expressionCalculator(expr)).to.equal(result);
 //     });
 
-//     it("Brackets test 1", function () {
-//         const expr = " 20 - 57 * 12 - (  58 + 84 * 32 / 27  ) ";
-//         const result = -821.5556;
+//     it("Test simple division", function () {
+//         const expr = "1/2";
+//         const result = 0.5;
+//         expect(expressionCalculator(expr)).to.equal(result);
+//     });
+
+//     it("Test division by zero", function () {
+//         const expr = "1 / 0";
+//         expect(() => expressionCalculator(expr)).to.throw("TypeError: Division by zero.");
+//     });
+
+
+//     it("Mixed base test 1", function () {
+//         const expr = " 49 + 63 - 58.8 * 36 / 2 + 4 ";
+//         const result = -942.4;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 2", function () {
-//         const expr = " 77 + 79 / 25 * (  64 * 63 - 89 * 14  ) * 49 ";
-//         const result = 431461.2400;
+//     it("Mixed base test 2", function () {
+//         const expr = " 84 + 62 / 33 * 10 + 15 ";
+//         const result = 117.7879;
+//         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+//     });
+//     it("Mixed base test 2_my variant 1", function () {
+//         const expr = " 62 / 2";
+//         const result = 31;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 3", function () {
-//         const expr = " 100 - 60 / 38 + (  19 / 88 * 97 / 82 / 94  ) * 92 ";
-//         const result = 98.6710;
+//     it("Mixed base test 2_my variant 2", function () {
+//         const expr = " 62 / 2 * 10";
+//         const result = 310;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 4", function () {
-//         const expr = " (  97 / 48 + 86 + 56 * 94  ) / 43 + 57 ";
-//         const result = 181.4656;
+//     it("Mixed base test 3", function () {
+//         const expr = " 48 + 59 * 86 * 92 * 23 ";
+//         const result = 10736632.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 5", function () {
-//         const expr = " (  68 - 85 / 75 * 64  ) / 15 + 73 ";
-//         const result = 72.6978;
+//     it("Mixed base test 4", function () {
+//         const expr = " 16 + 25 - 92 + 54 / 66 ";
+//         const result = -50.1818;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 6", function () {
-//         const expr = " 91 + 18 / (  42 + 62 + 84 * 95  ) + 30 ";
-//         const result = 121.0022;
+//     it("Mixed base test 5", function () {
+//         const expr = " 64 + 19 - 77 - 93 ";
+//         const result = -87.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 7", function () {
-//         const expr = " 49 * 31 * (  20 - 83 / 63 / 46 * 29  ) / 68 ";
-//         const result = 428.2112;
+//     it("Mixed base test 6", function () {
+//         const expr = " 88 - 72 + 55 * 57 ";
+//         const result = 3151.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 8", function () {
-//         const expr = " 35 - 45 / 37 + 84 + (  41 + 86 / 18 / 41 * 73  ) ";
-//         const result = 167.2906;
+//     it("Mixed base test 7", function () {
+//         const expr = " 99 * 55 / 30 + 50 ";
+//         const result = 231.5000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 9", function () {
-//         const expr = " 44 * 13 / (  26 + 24 * 70 + 89 * 7  ) + 81 ";
-//         const result = 81.2456;
+//     it("Mixed base test 8", function () {
+//         const expr = " 11 - 88 + 84 - 48 ";
+//         const result = -41.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 10", function () {
-//         const expr = " 53 - 88 + 7 + (  34 / 54 + 15 / 23 / 6  ) * 73 ";
-//         const result = 25.8977;
+//     it("Mixed base test 9", function () {
+//         const expr = " 68 * 60 / 87 / 53 + 17 ";
+//         const result = 17.8848;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 11", function () {
-//         const expr = " 57 - 71 + (  14 + 3 - 24 * 100 / 23  ) / 53 ";
-//         const result = -15.6481;
+//     it("Mixed base test 10", function () {
+//         const expr = " 63 - 69 - 46 + 57 ";
+//         const result = 5.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 12", function () {
-//         const expr = " (  41 * 76 * 79 - 61  ) / 60 + 83 ";
-//         const result = 4184.7167;
+//     it("Mixed base test 11", function () {
+//         const expr = " 60 + 29 / 57 - 85 ";
+//         const result = -24.4912;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 13", function () {
-//         const expr = " (  73 + 85 + 64 / 17  ) * 17 + 31 / 60 ";
-//         const result = 2750.5167;
+//     it("Mixed base test 12", function () {
+//         const expr = " 34 * 18 * 55 - 50 ";
+//         const result = 33610.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 14", function () {
-//         const expr = " 74 * 96 + 62 / (  25 / 33 + 96 + 87 + 78  ) ";
-//         const result = 7104.2369;
+//     it("Mixed base test 13", function () {
+//         const expr = " 12 * 3 - 18 + 34 - 84 ";
+//         const result = -32.0000;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 15", function () {
-//         const expr = " 33 - 96 + (  95 - 76 * 98 / 11  ) * 15 ";
-//         const result = -8794.3636;
+//     it("Mixed base test 14", function () {
+//         const expr = " 70 / 42 - 52 - 64 / 35 ";
+//         const result = -52.1619;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 
-//     it("Brackets test 16", function () {
-//         const expr = " 72 / 75 + 4 * (  14 * 2 / 57 * 21  ) / 15 ";
-//         const result = 3.7109;
-//         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-//     });
-
-//     it("Brackets test 17", function () {
-//         const expr = " 72 * 95 + 53 + (  2 + 76 - 52 / 1 - 47  ) ";
-//         const result = 6872.0000;
-//         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-//     });
-
-//     it("Brackets test 18", function () {
-//         const expr = " 85 * 97 / (  89 / 11 - 18 * 96  ) - 61 ";
-//         const result = -65.7939;
-//         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-//     });
-
-//     it("Brackets test 19", function () {
-//         const expr = " 29 + 24 / 91 - (  14 * 71 * 18 / 20 * 100  ) + 63 ";
-//         const result = -89367.7363;
-//         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-//     });
-
-//     it("Brackets test 20", function () {
-//         const expr = " 52 * 62 * (  61 + 12 - 14 * 79  ) + 39 ";
-//         const result = -3330353.0000;
+//     it("Mixed base test 15", function () {
+//         const expr = " 39 / 41 + 100 + 45 ";
+//         const result = 145.9512;
 //         expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
 //     });
 // });
+
+describe("Medium", function () {
+    // it("Brackets must be paired", function () {
+    //     const expr = "1 + 2) * 3";
+    //     expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+    // });
+
+    // it("Brackets must be paired", function () {
+    //     const expr = "((1 + 2) * 3";
+    //     expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+    // });
+
+    // it("Brackets must be paired", function () {
+    //     const expr = "((1 + 2 * 3";
+    //     expect(() => expressionCalculator(expr)).to.throw("ExpressionError: Brackets must be paired");
+    // });
+
+    // it("Brackets test 1", function () {
+    //     const expr = " 20 - 57 * 12 - (  58 + 84 * 32 / 27  ) ";
+    //     const result = -821.5556;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 2", function () {
+    //     const expr = " 77 + 79 / 25 * (  64 * 63 - 89 * 14  ) * 49 ";
+    //     const result = 431461.2400;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 3", function () {
+    //     const expr = " 100 - 60 / 38 + (  19 / 88 * 97 / 82 / 94  ) * 92 ";
+    //     const result = 98.6710;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 4", function () {
+    //     const expr = " (  97 / 48 + 86 + 56 * 94  ) / 43 + 57 ";
+    //     const result = 181.4656;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    it("Brackets test 5", function () {
+        const expr = " (  68 - 85 / 75 * 64  ) / 15 + 73 ";
+        const result = 72.6978;
+        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    });
+
+    // it("Brackets test 6", function () {
+    //     const expr = " 91 + 18 / (  42 + 62 + 84 * 95  ) + 30 ";
+    //     const result = 121.0022;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 7", function () {
+    //     const expr = " 49 * 31 * (  20 - 83 / 63 / 46 * 29  ) / 68 ";
+    //     const result = 428.2112;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 8", function () {
+    //     const expr = " 35 - 45 / 37 + 84 + (  41 + 86 / 18 / 41 * 73  ) ";
+    //     const result = 167.2906;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 9", function () {
+    //     const expr = " 44 * 13 / (  26 + 24 * 70 + 89 * 7  ) + 81 ";
+    //     const result = 81.2456;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 10", function () {
+    //     const expr = " 53 - 88 + 7 + (  34 / 54 + 15 / 23 / 6  ) * 73 ";
+    //     const result = 25.8977;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 11", function () {
+    //     const expr = " 57 - 71 + (  14 + 3 - 24 * 100 / 23  ) / 53 ";
+    //     const result = -15.6481;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 12", function () {
+    //     const expr = " (  41 * 76 * 79 - 61  ) / 60 + 83 ";
+    //     const result = 4184.7167;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 13", function () {
+    //     const expr = " (  73 + 85 + 64 / 17  ) * 17 + 31 / 60 ";
+    //     const result = 2750.5167;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 14", function () {
+    //     const expr = " 74 * 96 + 62 / (  25 / 33 + 96 + 87 + 78  ) ";
+    //     const result = 7104.2369;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 15", function () {
+    //     const expr = " 33 - 96 + (  95 - 76 * 98 / 11  ) * 15 ";
+    //     const result = -8794.3636;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 16", function () {
+    //     const expr = " 72 / 75 + 4 * (  14 * 2 / 57 * 21  ) / 15 ";
+    //     const result = 3.7109;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 17", function () {
+    //     const expr = " 72 * 95 + 53 + (  2 + 76 - 52 / 1 - 47  ) ";
+    //     const result = 6872.0000;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 18", function () {
+    //     const expr = " 85 * 97 / (  89 / 11 - 18 * 96  ) - 61 ";
+    //     const result = -65.7939;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 19", function () {
+    //     const expr = " 29 + 24 / 91 - (  14 * 71 * 18 / 20 * 100  ) + 63 ";
+    //     const result = -89367.7363;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+
+    // it("Brackets test 20", function () {
+    //     const expr = " 52 * 62 * (  61 + 12 - 14 * 79  ) + 39 ";
+    //     const result = -3330353.0000;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+});
 
 // describe("Hard", function () {
 //     it("Nested brackets test 1", function () {
