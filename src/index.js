@@ -41,7 +41,6 @@ function dispatcher(str) {
         '*': (array) => multiplicationAndDivision(array),
         '/': (array) => multiplicationAndDivision(array),
     }
-    console.log(`str: ${str === '-'}`);
     return object[str];
 }
 
