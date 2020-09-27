@@ -47,24 +47,48 @@ function dispatcher(str) {
 }
 
 function makeAnArrayFromString(str) {
-    return str.split(' ').join('').split('').map((i) => {
-        if (i === '*' || i === '/' || i === '-' || i === '+' || i === ')' || i === '(') {
+    return str.split(' ').join('').split('').map((i, index, arr) => {
+        if (i === '*' || i === '/' || (i === '-' && (index !== 0 && (arr[index - 1] !== '*' && arr[index - 1] !== '/'))) || i === '+' || i === ')' || i === '(') {
             return ` ${i} `;
         }
-        return i
+        return i;
     }).join('').split(' ').filter((i) => i !== '');
 };
 
 function stringAnalyser(str) {
-    console.log(str);
-    console.log(typeof str);
+    console.log(`59: ${str}`);
+    console.log(`60: ${typeof str}`);
     let returnArray = [];
     const operands = ['-', '*', '/'];
-    for (let i = 0; i < operands.length; i += 1) {
-        if (str.includes(operands[i]) && !returnArray.includes(operands[i])) {
-            returnArray.push(operands[i]);
-        }
-    }
+    // ------
+    // for (let i = 0; i < operands.length; i += 1) {
+    //     if (str.includes(operands[i]) && !returnArray.includes(operands[i])) {
+    //         returnArray.push(operands[i]);
+    //     }
+    // }
+    // --------
+    str.split('').map((i, index, arr) => {
+        if (i === '-') {
+            if (index === 0 || (index !== 0 && (arr[index - 1] === '*' || arr[index - 1] === '/'))) {
+                returnArray.push('');
+            } else {
+                if (!returnArray.includes(i)) {
+                    returnArray.push(i);
+                }
+            }
+        };
+        if (i === '*') {
+            if (!returnArray.includes('*')) {
+                returnArray.push('*')
+            }
+        };
+        if (i === '/') {
+            if (!returnArray.includes('*')) {
+                returnArray.push('*')
+            }
+        };
+        return i;
+    })
     return returnArray.map((i) => {
         if (i === '/' && returnArray.includes('*')) {
             return '';
@@ -115,10 +139,12 @@ function expressionCalculator(expr) {
         // console.log(`i: ${i}`);
         // console.log(stringAnalyser(i));
         if (stringAnalyser(i).length === 1) {
-            // console.log(`i: ${i}`);
-            // console.log((makeAnArrayFromString(i)));
-            // console.log((stringAnalyser(i)));
-            // console.log(dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i)));
+            console.log('------------');
+            console.log(`i: ${i}`);
+            console.log((makeAnArrayFromString(i)));
+            console.log((stringAnalyser(i)));
+            console.log(dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i)));
+            console.log('------------');
             return acc + dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i));
         }
         else if (stringAnalyser(i).length > 1) {

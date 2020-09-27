@@ -173,13 +173,13 @@ describe("Medium", function () {
     //     const result = 181.4656;
     //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
     // });
-
-    it("Brackets test 5", function () {
-        const expr = " (  68 - 85 / 75 * 64  ) / 15 + 73 ";
-        const result = 72.6978;
-        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    });
-
+    // // --------------
+    // it("Brackets test 5", function () {
+    //     const expr = " (  68 - 85 / 75 * 64  ) / 15 + 73 ";
+    //     const result = 72.6978;
+    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    // });
+    // // ------------------
     // it("Brackets test 6", function () {
     //     const expr = " 91 + 18 / (  42 + 62 + 84 * 95  ) + 30 ";
     //     const result = 121.0022;
@@ -252,11 +252,11 @@ describe("Medium", function () {
     //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
     // });
 
-    // it("Brackets test 18", function () {
-    //     const expr = " 85 * 97 / (  89 / 11 - 18 * 96  ) - 61 ";
-    //     const result = -65.7939;
-    //     expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
-    // });
+    it("Brackets test 18", function () {
+        const expr = " 85 * 97 / (  89 / 11 - 18 * 96  ) - 61 ";
+        const result = -65.7939;
+        expect(Number(expressionCalculator(expr).toFixed(4))).to.equal(result);
+    });
 
     // it("Brackets test 19", function () {
     //     const expr = " 29 + 24 / 91 - (  14 * 71 * 18 / 20 * 100  ) + 63 ";
