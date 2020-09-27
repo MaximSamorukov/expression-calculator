@@ -6,11 +6,9 @@ function eval() {
 }
 
 function splitWithMinus(str) {
-    // console.log(`9: ${str}`);
     let chunk = '';
     let fArray = [];
     str.split('').map((i, index, arr) => {
-        // console.log(`13: ${i}`);
         if (i !== '-') {
             chunk += i;
             if (index === arr.length - 1) {
@@ -28,7 +26,6 @@ function splitWithMinus(str) {
         };
         return i;
     });
-    // console.log(`25:  ${fArray}`);
     return fArray;
 }
 
@@ -51,7 +48,6 @@ function addition(array) {
 }
 
 function multiplicationAndDivision(array) {
-    // console.log(array);
     const returnValue = array.map((i, index, arr) => {
         if (index > 0 && (arr[index - 1] === '/' || arr[index - 1] === '*')) {
             const value = arr[index - 1] === '*' ? arr[index - 2] * arr[index] : arr[index - 2] / arr[index];
@@ -60,7 +56,6 @@ function multiplicationAndDivision(array) {
         }
         return i;
     });
-    // console.log(returnValue[returnValue.length - 1]);
     return returnValue[returnValue.length - 1];
 }
 
@@ -83,17 +78,8 @@ function makeAnArrayFromString(str) {
 };
 
 function stringAnalyser(str) {
-    // console.log(`59: ${str}`);
-    // console.log(`60: ${typeof str}`);
     let returnArray = [];
     const operands = ['-', '*', '/'];
-    // ------
-    // for (let i = 0; i < operands.length; i += 1) {
-    //     if (str.includes(operands[i]) && !returnArray.includes(operands[i])) {
-    //         returnArray.push(operands[i]);
-    //     }
-    // }
-    // --------
     str.split('').map((i, index, arr) => {
         if (i === '-') {
             if (index === 0 || (index !== 0 && (arr[index - 1] === '*' || arr[index - 1] === '/'))) {
@@ -139,8 +125,6 @@ function bracketSolver(arr) {
             count = count - 1;
 
             if (count === 0) {
-                console.log(`139: ${count}`);
-                console.log(`140: ${innerBracketExpression}`);
                 originalExpression.push(expressionCalculator(innerBracketExpression.join('')));
                 innerBracketExpression = [];
             };
@@ -152,35 +136,29 @@ function bracketSolver(arr) {
             originalExpression.push(i);
         };
         if (count < 0 || (count > 0 && index === arr.length - 1)) {
-            console.log(count);
             throw new Error("ExpressionError: Brackets must be paired");
         };
         return i;
-    })
-    return originalExpression;
+    });
+    const as = originalExpression.map((i, index, arr) => {
+
+        if (i === '-' && (typeof arr[index + 1] === 'number' && arr[index + 1] < 0)) {
+            originalExpression[index + 1] = originalExpression[index + 1] * (-1);
+            return '+';
+        }
+        return i;
+    });
+    return as;
 }
 
 function expressionCalculator(expr) {
 
     if (expr.includes('/ 0') || expr.includes('/0')) throw new Error("TypeError: Division by zero.");
     const newExp = makeAnArrayFromString(expr);
-    console.log(newExp);
     const newExpresWithoutBrackets = bracketSolver(newExp);
-    // console.log(newExpresWithoutBrackets);
     const arrayOutOfPlus = newExpresWithoutBrackets.join('').split('+');
-    // console.log(arrayOutOfPlus);
     let aa = arrayOutOfPlus.reduce((acc, i) => {
-        // console.log(`acc: ${acc}`);
-        // console.log(`i: ${i}`);
-        // console.log(`160: ${stringAnalyser(i)}`);
-        // console.log(stringAnalyser(i).length);
         if (stringAnalyser(i).length === 1) {
-            // console.log('------------');
-            // console.log(`i: ${i}`);
-            // console.log((makeAnArrayFromString(i)));
-            // console.log((stringAnalyser(i)));
-            // console.log(dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i)));
-            // console.log('------------');
             return acc + dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i));
         }
         else if (stringAnalyser(i).length > 1) {
@@ -197,7 +175,6 @@ function expressionCalculator(expr) {
             return acc + parseFloat(i);
         }
     }, 0);
-    // console.log(aa);
     return aa;
 }
 
