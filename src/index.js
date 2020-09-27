@@ -5,6 +5,33 @@ function eval() {
     return;
 }
 
+function splitWithMinus(str) {
+    // console.log(`9: ${str}`);
+    let chunk = '';
+    let fArray = [];
+    str.split('').map((i, index, arr) => {
+        // console.log(`13: ${i}`);
+        if (i !== '-') {
+            chunk += i;
+            if (index === arr.length - 1) {
+                fArray.push(chunk);
+                chunk = '';
+            }
+        };
+        if (i === '-') {
+            if (index === 0 || (index !== 0 && (arr[index - 1] === '*' || arr[index - 1] === '/'))) {
+                chunk += i;
+            } else {
+                fArray.push(chunk);
+                chunk = '';
+            }
+        };
+        return i;
+    });
+    // console.log(`25:  ${fArray}`);
+    return fArray;
+}
+
 function substraction(array) {
     let value = array.filter((i) => i !== '-');
     value = value.reduce((acc, i, index, arr) => {
@@ -56,8 +83,8 @@ function makeAnArrayFromString(str) {
 };
 
 function stringAnalyser(str) {
-    console.log(`59: ${str}`);
-    console.log(`60: ${typeof str}`);
+    // console.log(`59: ${str}`);
+    // console.log(`60: ${typeof str}`);
     let returnArray = [];
     const operands = ['-', '*', '/'];
     // ------
@@ -136,19 +163,24 @@ function expressionCalculator(expr) {
     // console.log(arrayOutOfPlus);
     let aa = arrayOutOfPlus.reduce((acc, i) => {
         // console.log(`acc: ${acc}`);
-        // console.log(`i: ${i}`);
-        // console.log(stringAnalyser(i));
+        console.log(`i: ${i}`);
+        console.log(`160: ${stringAnalyser(i)}`);
+        console.log(stringAnalyser(i).length);
         if (stringAnalyser(i).length === 1) {
-            console.log('------------');
-            console.log(`i: ${i}`);
-            console.log((makeAnArrayFromString(i)));
-            console.log((stringAnalyser(i)));
-            console.log(dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i)));
-            console.log('------------');
+            // console.log('------------');
+            // console.log(`i: ${i}`);
+            // console.log((makeAnArrayFromString(i)));
+            // console.log((stringAnalyser(i)));
+            // console.log(dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i)));
+            // console.log('------------');
             return acc + dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i));
         }
         else if (stringAnalyser(i).length > 1) {
-            return acc + substraction(i.split('-').map((i) => {
+            console.log('qu');
+            let arrWithoutMinus = splitWithMinus(i);
+            console.log('172');
+            console.log(`172: ${arrWithoutMinus}`);
+            return acc + substraction(arrWithoutMinus.map((i) => {
                 if (stringAnalyser(i).length === 1) {
                     return multiplicationAndDivision(makeAnArrayFromString(i));
                 }
@@ -158,7 +190,7 @@ function expressionCalculator(expr) {
             return acc + parseFloat(i);
         }
     }, 0);
-    // console.log(aa);
+    console.log(aa);
     return aa;
 }
 
