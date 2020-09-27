@@ -125,17 +125,24 @@ function stringAnalyser(str) {
 }
 
 function bracketSolver(arr) {
-    const innerBracketExpression = [];
+    let innerBracketExpression = [];
     const originalExpression = []
     let count = 0;
     arr.map((i, index, arr) => {
         if (i === '(') {
             count = count + 1;
+            if (count > 1) {
+                innerBracketExpression.push(i);
+            }
         };
         if (i === ')') {
             count = count - 1;
+
             if (count === 0) {
+                console.log(`139: ${count}`);
+                console.log(`140: ${innerBracketExpression}`);
                 originalExpression.push(expressionCalculator(innerBracketExpression.join('')));
+                innerBracketExpression = [];
             };
         };
         if (count > 0 && i !== '(') {
@@ -145,6 +152,7 @@ function bracketSolver(arr) {
             originalExpression.push(i);
         };
         if (count < 0 || (count > 0 && index === arr.length - 1)) {
+            console.log(count);
             throw new Error("ExpressionError: Brackets must be paired");
         };
         return i;
@@ -156,16 +164,16 @@ function expressionCalculator(expr) {
 
     if (expr.includes('/ 0') || expr.includes('/0')) throw new Error("TypeError: Division by zero.");
     const newExp = makeAnArrayFromString(expr);
-    // console.log(newExp);
+    console.log(newExp);
     const newExpresWithoutBrackets = bracketSolver(newExp);
     // console.log(newExpresWithoutBrackets);
     const arrayOutOfPlus = newExpresWithoutBrackets.join('').split('+');
     // console.log(arrayOutOfPlus);
     let aa = arrayOutOfPlus.reduce((acc, i) => {
         // console.log(`acc: ${acc}`);
-        console.log(`i: ${i}`);
-        console.log(`160: ${stringAnalyser(i)}`);
-        console.log(stringAnalyser(i).length);
+        // console.log(`i: ${i}`);
+        // console.log(`160: ${stringAnalyser(i)}`);
+        // console.log(stringAnalyser(i).length);
         if (stringAnalyser(i).length === 1) {
             // console.log('------------');
             // console.log(`i: ${i}`);
@@ -176,10 +184,9 @@ function expressionCalculator(expr) {
             return acc + dispatcher(stringAnalyser(i)[0])(makeAnArrayFromString(i));
         }
         else if (stringAnalyser(i).length > 1) {
-            console.log('qu');
+
             let arrWithoutMinus = splitWithMinus(i);
-            console.log('172');
-            console.log(`172: ${arrWithoutMinus}`);
+
             return acc + substraction(arrWithoutMinus.map((i) => {
                 if (stringAnalyser(i).length === 1) {
                     return multiplicationAndDivision(makeAnArrayFromString(i));
@@ -190,7 +197,7 @@ function expressionCalculator(expr) {
             return acc + parseFloat(i);
         }
     }, 0);
-    console.log(aa);
+    // console.log(aa);
     return aa;
 }
 
